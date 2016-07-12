@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>        <meta charset="utf-8" />
+        <title>Projets</title>
+        <f:facet name="middle">
+            <h:outputStylesheet library="default" name="css/style.css"  />
+            <h:outputStylesheet library="default" name="bootstrap/css/bootstrap.min.css" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+            <h:outputScript name="bootstrap/js/bootstrap.js" />
+        </f:facet>    
+    </h:head>
+    <h:body>
+        <ui:include src="../include/header.xhtml" />
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    #{suptaskBean.project.description}
+                </div>
+                <div class="col-md-6">
+                    <h1>#{suptaskBean.project.title} <small>membres du projet</small></h1>
+                    <h:form>
+                        <h:dataTable var="p" value="#{suptaskBean.findProjectMembers()}" class="table">
+                            <h:column>
+                                <f:facet name="header">Pseudo</f:facet>
+                                <h:outputText value="#{p.username}"></h:outputText>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </div>
+
+                <h:form>
+                    <div class="col-md-3 pull-right">
+                        <h:link value="Editer le projet" outcome="projectEdit.xhtml" class="btn btn-link text-smallcaps"/>
+                        <h:link value="Ajouter des membres" outcome="addMember.xhtml" class="btn btn-link text-smallcaps" ></h:link>
+                        <h:link value="Ajouter des tâches" outcome="addTask.xhtml" class="btn btn-link text-smallcaps" ></h:link>
+                        <h:commandLink value="Supprimer le projet" action="#{suptaskBean.deleteProject}" class="btn btn-link text-smallcaps" onclick="return confirm('Etes vous sur de vouloir supprimer ce projet ?')"></h:commandLink>
+                    </div>
+                </h:form>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Liste des taches :</h1>
+                    <h:form>
+                        <h:dataTable var="p" value="#{suptaskBean.findProjectTasks()}" class="table">
+                            <h:column>
+                                <f:facet name="header">Id</f:facet>
+                                <h:outputText value="#{p.id}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Title</f:facet>
+                                <h:outputText value="#{p.title}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Description</f:facet>
+                                <h:outputText value="#{p.description}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Due time</f:facet>
+                                <h:outputText value="#{p.dueTime}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Priority</f:facet>
+                                <h:outputText value="#{p.priority}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Finished</f:facet>
+                                <h:outputText value="#{p.finished}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Attribué à</f:facet>
+                                <h:outputText value="#{p.user.username}" ></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Options</f:facet>
+                                <h:commandLink value="Avancer la tache" action="#{suptaskBean.editFinished(p)}" class="btn btn-link text-smallcaps"></h:commandLink>
+                                <h:commandLink value="Modifier" action="#{suptaskBean.editTask(p)}" class="btn btn-link text-smallcaps"></h:commandLink>
+                                <h:commandLink value="Supprimer" action="#{suptaskBean.deleteTask(p)}" class="btn btn-link text-smallcaps" onclick="return confirm('Etes vous sur de vouloir supprimer cette tache ?')"></h:commandLink>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>
+

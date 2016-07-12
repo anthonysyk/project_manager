@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta charset="utf-8" />
+        <title>Editer Project</title>
+        <f:facet name="middle">
+            <h:outputStylesheet library="default" name="css/style.css"  />
+            <h:outputStylesheet library="default" name="bootstrap/css/bootstrap.min.css" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+            <h:outputScript name="bootstrap/js/bootstrap.js" />
+        </f:facet>
+    </h:head>
+    <h:body>
+        <ui:include src="../include/header.xhtml" />
+
+        <div class="container">
+            <div class="page-header">
+                <h1>Modifier le projet</h1>
+            </div>
+            <div class="row">
+                <h:form>
+                    <h:panelGrid columns="2" class="form-table">
+                        <h:outputLabel value="Titre du projet " for="title"/>
+                        <h:inputText id="title" value="#{suptaskBean.project.title}" title="title" required="true" requiredMessage="The Title field is required."/>
+
+                        <h:outputLabel value="Description" for="description"/>
+                        <h:inputText id="description" value="#{suptaskBean.project.description}" title="description" required="true" requiredMessage="The Description field is required."/>
+
+                        <h:outputLabel value="" for=""/>
+                        <h:commandButton value="Enregistrer" action="#{suptaskBean.editProject()}" class="btn btn-success form-control"></h:commandButton>
+                    </h:panelGrid>
+                </h:form>
+            </div>
+        </div>
+    </h:body>
+</html>
+

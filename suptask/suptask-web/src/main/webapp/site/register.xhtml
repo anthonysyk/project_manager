@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <meta charset="utf-8" />
+        <title>Inscription</title>
+        <f:facet name="middle">
+            <h:outputStylesheet library="default" name="css/style.css"  />
+            <h:outputStylesheet library="default" name="bootstrap/css/bootstrap.min.css" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+            <h:outputScript name="bootstrap/js/bootstrap.js" />
+        </f:facet>
+    </h:head>
+    <h:body>
+        <ui:include src="../include/header.xhtml" />
+        <f:view>
+            <div class="container">
+                <h:form>
+                    <div class="page-header">
+                        <h1><h:outputText value="Inscription"/></h1>
+                    </div>
+                    <h:panelGrid columns="2" class="form-table">
+                        <h:outputLabel value="Nom d'utilisateur " for="username"/>
+                        <h:inputText id="username" value="#{suptaskBean.user.username}" class="form-control" title="username" required="true" requiredMessage="The Username field is required."/>
+
+                        <h:outputLabel value="Prénom " for="firstName"/>
+                        <h:inputText id="firstName" value="#{suptaskBean.user.firstName}" class="form-control" title="firstName" required="true" requiredMessage="The firstName field is required."/>
+
+                        <h:outputLabel value="Nom de Famille " for="lastName"/>
+                        <h:inputText id="lastName" value="#{suptaskBean.user.lastName}" class="form-control" title="lastName" required="true" requiredMessage="The lastName field is required."/>
+
+                        <h:outputLabel value="E-mail " for="mail"/>
+                        <h:inputText id="mail" value="#{suptaskBean.user.mail}" class="form-control" title="mail" required="true" requiredMessage="The Mail field is required."/>
+
+                        <h:outputLabel value="Adresse postale " for="address"/>
+                        <h:inputText id="address" value="#{suptaskBean.user.address}" class="form-control" title="address" required="true" requiredMessage="The Address field is required."/>
+
+                        <h:outputLabel value="Numéro de Téléphone " for="phoneNumber"/>
+                        <h:inputText id="phoneNumber" value="#{suptaskBean.user.phoneNumber}" class="form-control" title="phoneNumber" required="true" requiredMessage="The phoneNumber field is required."/>
+
+                        <h:outputLabel value="Mot de Passe " for="password"/>
+                        <h:inputSecret id="password" value="#{suptaskBean.user.password}" class="form-control" title="password" required="true" requiredMessage="The password field is required."/>
+
+                        <h:outputLabel value="" for="password"/>
+                        <h:commandButton value="Inscription" class="btn btn-primary btn-block" action="#{suptaskBean.register()}"></h:commandButton>
+                    </h:panelGrid>
+
+                </h:form>
+            </div>
+        </f:view>
+    </h:body>
+</html>

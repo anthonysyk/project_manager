@@ -1,0 +1,28 @@
+@import url(http://fonts.googleapis.com/css?family=Nova+Square);
+
+.text-smallcaps{
+    font-variant: small-caps;
+}
+.navbar-brand{
+    font-family: 'Nova Square', cursive;
+    font-size: 1.5em;
+}
+.navbar .glyphicon{
+    top: 3px;
+    margin: 0 3px;
+}
+
+#mainFooter{
+    height: 50px;
+    line-height: 50px;
+    margin-top: 20px;
+    border-top: 1px solid #EEE;
+}
+
+.striked{
+    text-decoration: line-through;
+}
+
+.form-table td{
+    padding: 5px;
+}

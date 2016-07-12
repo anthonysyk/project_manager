@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+    <h:head>
+        <meta charset="utf-8" />
+        <title>Mettre à jour l'utilisateur</title>
+        <h:outputStylesheet library="default" name="css/style.css"  />
+    </h:head>
+    <h:body>
+        <f:view>
+
+            <div class="container">
+                <h:form>
+                    <h1><h:outputText value="Create/Edit"/></h1>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="FirstName:" for="firstName"/>
+                        <h:inputText id="firstName" value="#{suptaskBean.user.firstName}" title="firstName" required="true" requiredMessage="The firstName field is required."/>
+
+                        <h:outputLabel value="LastName:" for="lastName"/>
+                        <h:inputText id="lastName" value="#{suptaskBean.user.lastName}" title="lastName" required="true" requiredMessage="The lastName field is required."/>
+
+                        <h:outputLabel value="Mail:" for="mail"/>
+                        <h:inputText id="mail" value="#{suptaskBean.user.mail}" title="mail" required="true" requiredMessage="The Mail field is required."/>
+
+                        <h:outputLabel value="Address:" for="address"/>
+                        <h:inputText id="address" value="#{suptaskBean.user.address}" title="address" required="true" requiredMessage="The Address field is required."/>
+
+                        <h:outputLabel value="PhoneNumber:" for="phoneNumber"/>
+                        <h:inputText id="phoneNumber" value="#{suptaskBean.user.phoneNumber}" title="phoneNumber" required="true" requiredMessage="The phoneNumber field is required."/>
+
+                        <h:outputLabel value="Password:" for="password"/>
+                        <h:inputText id="password" value="#{suptaskBean.user.password}" title="password" required="true" requiredMessage="The password field is required."/>
+
+                        <h:commandButton value="save" action="#{suptaskBean.edit()}"></h:commandButton>
+                    </h:panelGrid>
+                </h:form>
+            </div>
+        </f:view>
+    </h:body>
+</html>
